@@ -5,9 +5,9 @@ import org.apache.tomcat.util.threads.TaskThread;
 
 import java.util.Map;
 
+@Getter
 public class MockingThread extends TaskThread {
 
-    @Getter
     private final ThreadLocal<Map<String, Object>> threadLocal;
 
     public MockingThread(ThreadGroup group, Runnable target, String name) {

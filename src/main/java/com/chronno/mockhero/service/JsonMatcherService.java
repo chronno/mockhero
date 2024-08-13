@@ -22,13 +22,6 @@ public class JsonMatcherService {
         this.mockContextService = mockContextService;
     }
 
-    public Boolean hasPlaceHolder(String json) {
-        Pattern pattern = Pattern.compile(PLACEHOLDER_REGEX);
-        Matcher matcher = pattern.matcher(json);
-        return matcher.find();
-    }
-
-
     public Boolean validateRequest(String mockRequest, String endpointRequest) {
         try {
             JsonNode originalJson = defaultObjectMapper.readTree(mockRequest);
