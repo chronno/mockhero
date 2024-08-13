@@ -15,9 +15,8 @@ public class ConfigurationController {
     }
 
     @PostMapping
-    public void configureSomething(@RequestBody Mock mock) {
-        mockConfigurationService.addMock(mock);
-
+    public Mock configureSomething(@RequestBody Mock mock) {
+        return mockConfigurationService.addMock(mock);
     }
 
     @GetMapping("/{mockId}")
