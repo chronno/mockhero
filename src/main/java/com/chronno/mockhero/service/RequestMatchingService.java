@@ -48,12 +48,9 @@ public class RequestMatchingService {
     public Boolean checkAllHeadersExist(Mock mock, HttpServletRequest request) {
         Map<String, String> map = mock.getRequest().getHeaders();
         Enumeration<String> enumeration = request.getHeaderNames();
-        Set<String> enumerationSet = new HashSet<>();
-        while (enumeration.hasMoreElements()) {
-            enumerationSet.add(enumeration.nextElement());
-        }
+        List<String> enumerationSet = Collections.list(enumeration);
         for (String key : map.keySet()) {
-            if (!enumerationSet.contains(key)) {
+            if (!enumerationSet.contains(key) || !request.getHeader(key).equalsIgnoreCase(map.get(key))) {
                 return false;
             }
         }

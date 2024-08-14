@@ -3,6 +3,7 @@ package com.chronno.mockhero.controller;
 import com.chronno.mockhero.persistence.model.Mock;
 import com.chronno.mockhero.service.RequestMatchingService;
 import com.chronno.mockhero.service.ResponseBuilderService;
+import io.micrometer.core.instrument.Timer;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class MockheroController {
         this.responseBuilderService = responseBuilderService;
     }
 
+    private Timer timer;
 
     @RequestMapping("/**" )
     public ResponseEntity<?> processMock(HttpServletRequest request) {
